@@ -1,8 +1,8 @@
 import streamlit as st
-import sentiment_analysis as sa
+from challenge_functions import sentiment_analysis as sa
 from st_aggrid import GridOptionsBuilder, AgGrid, AgGridTheme
-import asyncio
 import pandas as pd
+import datetime
 
 
 def my_aggrid(df):
@@ -47,15 +47,34 @@ if uploaded_file:
     grid_response = my_aggrid(df)
 
     data = grid_response["data"]
+
     # Lista de diccionarios
     selected_list = grid_response["selected_rows"]
-    predictions = asyncio.run(
-        sa.sentiment_analisys_on_selected_rows(selected_list), debug=True
-    )
 
-    data_out = [
-        (selected["body"], pred["label"], pred["score"])
-        for selected, pred in zip(selected_list, predictions)
-    ]
+    show_predictions = False
 
-    st.dataframe(pd.DataFrame(data_out, columns=["Review", "Label", "Score"]))
+    if "predictions" not in st.session_state:
+        st.session_state["predictions"] = None
+
+    if selected_list:
+        st.button("Get predictions", on_click=lambda: sa.get_predictions(selected_list))
+
+    else:
+        st.button("Get predictions", disabled=True)
+        st.session_state["predictions"] = None
+
+    if st.session_state["predictions"]:
+        data_out = [
+            (selected["body"], pred["label"], pred["score"])
+            for selected, pred in zip(selected_list, st.session_state["predictions"])
+        ]
+
+        result_df = pd.DataFrame(data_out, columns=["Review", "Label", "Score"])
+        st.dataframe(result_df)
+
+        fname = f"Sentiment Analysis - {datetime.datetime.now().isoformat()}.csv"
+        st.download_button(
+            label="Download data as CSV",
+            data=result_df.to_csv(index=False).encode(),
+            file_name=fname,
+        )

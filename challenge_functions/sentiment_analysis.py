@@ -16,6 +16,12 @@ def load_sentiment_analysis_model():
     return pipeline("sentiment-analysis")
 
 
+def get_predictions(selected_list):
+    st.session_state["predictions"] = asyncio.run(
+            sentiment_analisys_on_selected_rows(selected_list), debug=True
+        )
+
+
 async def sentiment_analisys_on_selected_rows(selected_rows: list):
     async_calls = [classify_sentiment(row["body"]) for row in selected_rows]
     predictions = await asyncio.gather(*async_calls)
