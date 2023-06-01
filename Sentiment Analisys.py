@@ -1,5 +1,5 @@
 import streamlit as st
-import src.utils as utils
+import sentiment_analysis as sa
 from st_aggrid import GridOptionsBuilder, AgGrid, AgGridTheme
 import asyncio
 import pandas as pd
@@ -40,7 +40,7 @@ st.markdown("# Sentiment Analysis")
 uploaded_file = st.file_uploader("Insert a csv file with TripAdvisor reviews.")
 
 if uploaded_file:
-    df = utils.load_csv_from_file_input(uploaded_file)
+    df = sa.load_csv_from_file_input(uploaded_file)
 
     st.markdown("### You can select the rows you want to analyze")
 
@@ -50,7 +50,7 @@ if uploaded_file:
     # Lista de diccionarios
     selected_list = grid_response["selected_rows"]
     predictions = asyncio.run(
-        utils.sentiment_analisys_on_selected_rows(selected_list), debug=True
+        sa.sentiment_analisys_on_selected_rows(selected_list), debug=True
     )
 
     data_out = [
