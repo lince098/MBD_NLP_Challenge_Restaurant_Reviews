@@ -1,5 +1,6 @@
 import streamlit as st
-from challenge_functions import sentiment_analysis as sa
+from challenge_functions import sentiment_analysis as sa, general as g
+
 import pandas as pd
 import datetime
 
@@ -15,7 +16,7 @@ st.markdown("# Sentiment Analysis")
 uploaded_file = st.file_uploader("Insert a csv file with TripAdvisor reviews.")
 
 if uploaded_file:
-    df = sa.load_csv_from_file_input(uploaded_file)
+    df = g.load_csv_from_file_input(uploaded_file)
 
     with st.form("my_form"):
         st.markdown("### You can select the rows you want to analyze")
