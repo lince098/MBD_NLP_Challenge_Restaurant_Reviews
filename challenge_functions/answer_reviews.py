@@ -52,7 +52,8 @@ def search(selected_list, df):
     ]
 
     hits_not_flattened = qdrant.search_batch(
-        collection_name=COLLECTION_NAME, requests=requests,
+        collection_name=COLLECTION_NAME,
+        requests=requests,
     )
 
     hits = list(chain.from_iterable(hits_not_flattened))

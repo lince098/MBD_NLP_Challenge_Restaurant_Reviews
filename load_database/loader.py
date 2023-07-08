@@ -29,7 +29,11 @@ df["encoded"] = model.encode(df["text"].tolist()).tolist()
 qdrant.upsert(
     collection_name=collection_name,
     points=[
-        PointStruct(id=idx, vector=row["encoded"], payload={"answer": (row["text"])},)
+        PointStruct(
+            id=idx,
+            vector=row["encoded"],
+            payload={"answer": (row["text"])},
+        )
         for idx, row in df.iterrows()
     ],
 )
