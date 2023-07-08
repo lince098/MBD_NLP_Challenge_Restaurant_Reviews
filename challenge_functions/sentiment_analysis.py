@@ -2,13 +2,12 @@ import streamlit as st
 from transformers import pipeline
 
 
-@st.cache_resource  
+@st.cache_resource
 def load_sentiment_analysis_model():
     return pipeline("sentiment-analysis")
 
 
 def get_predictions(selected_list, df):
-    print("get_predictions:selected list", selected_list)
     if selected_list:
         selected_rows = df.iloc[selected_list, :]
         text_column = selected_rows["body"].to_list()

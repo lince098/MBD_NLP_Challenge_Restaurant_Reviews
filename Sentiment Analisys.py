@@ -1,6 +1,5 @@
 import streamlit as st
 from challenge_functions import sentiment_analysis as sa, general as g
-
 import pandas as pd
 import datetime
 
@@ -24,8 +23,7 @@ if uploaded_file:
         st.dataframe(df)
 
         selected_list = st.multiselect("Index", df.index.to_list())
-        print(selected_list)
-        submitted = st.form_submit_button("Get predictions")
+        submitted = st.form_submit_button("Get Predictions")
 
     if submitted:
         preds = sa.get_predictions(selected_list, df)

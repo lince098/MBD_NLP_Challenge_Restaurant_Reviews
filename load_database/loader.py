@@ -5,7 +5,7 @@ import requests
 from sentence_transformers import SentenceTransformer
 
 # Read and preprocess articles extracted
-with open("generic_answers.txt","r") as file:
+with open("generic_answers.txt", "r") as file:
     lines = file.readlines()
 
 df = pd.DataFrame(lines, columns=["text"])
@@ -25,15 +25,11 @@ qdrant.recreate_collection(
 
 df["encoded"] = model.encode(df["text"].tolist()).tolist()
 
-    
+
 qdrant.upsert(
     collection_name=collection_name,
     points=[
-        PointStruct(
-            id=idx,
-            vector=row["encoded"],
-            payload={"answer": (row["text"])},
-        )
+        PointStruct(id=idx, vector=row["encoded"], payload={"answer": (row["text"])},)
         for idx, row in df.iterrows()
     ],
 )
