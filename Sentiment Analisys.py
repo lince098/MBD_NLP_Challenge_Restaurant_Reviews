@@ -2,7 +2,10 @@ import streamlit as st
 from challenge_functions import sentiment_analysis as sa, general as g
 import pandas as pd
 import datetime
+from dotenv import load_dotenv
 
+
+load_dotenv(override=False)
 
 st.sidebar.markdown("# Sentiment Analysis")
 st.sidebar.markdown(

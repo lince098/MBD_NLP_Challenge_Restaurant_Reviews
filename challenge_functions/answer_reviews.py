@@ -1,26 +1,23 @@
 from qdrant_client import QdrantClient
-
 from qdrant_client.http.models import SearchRequest
 from sentence_transformers import SentenceTransformer
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import logging
 from itertools import chain
 
 
-load_dotenv(override=False)
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.WARNING)
 
 COLLECTION_NAME = "restaurant_review_answers"
 
 
 @st.cache_resource
 def get_qdrant_connection():
-    host = os.environ["QDRANT_HOST"]
-    port = os.environ["QDRANT_PORT"]
+    host = os.getenv("QDRANT_HOST")
+    port = os.getenv("QDRANT_PORT")
     return QdrantClient(host, port=port)
 
 
@@ -56,6 +53,7 @@ def search(selected_list, df):
         requests=requests,
     )
 
+    # Hits flatten
     hits = list(chain.from_iterable(hits_not_flattened))
 
     if logger.level == logging.DEBUG:
