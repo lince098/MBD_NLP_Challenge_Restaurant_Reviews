@@ -23,7 +23,7 @@ if uploaded_file:
 
         selected_list = st.multiselect("Index", df.index.to_list())
 
-        submitted = st.form_submit_button("Get predictions")
+        submitted = st.form_submit_button("Get summaries")
 
     if submitted:
         summaries = asyncio.run(cs.summarize(selected_list, df))
@@ -36,6 +36,6 @@ if uploaded_file:
                 label="Download data as CSV",
                 data=summaries_df.to_csv(index=False).encode(),
                 file_name=fname,
-                )
+            )
         else:
             st.markdown(":red[No rows selected.]")
