@@ -28,7 +28,7 @@ if uploaded_file:
             preds_df = pd.DataFrame(preds, columns=["Message", "Score", "Answer"])
             st.dataframe(preds_df)
 
-            fname = f"Sentiment Analysis - {datetime.datetime.now().isoformat()}.csv"
+            fname = f"Automated Responses - {datetime.datetime.now().isoformat()}.csv"
             st.download_button(
                 label="Download data as CSV",
                 data=preds_df.to_csv(index=False).encode(),

@@ -31,6 +31,11 @@ if uploaded_file:
         if summaries:
             summaries_df = pd.DataFrame(summaries, columns=["Review", "Summary"])
             st.dataframe(summaries_df)
-
+            fname = f"Summaries - {datetime.datetime.now().isoformat()}.csv"
+            st.download_button(
+                label="Download data as CSV",
+                data=summaries_df.to_csv(index=False).encode(),
+                file_name=fname,
+                )
         else:
             st.markdown(":red[No rows selected.]")
