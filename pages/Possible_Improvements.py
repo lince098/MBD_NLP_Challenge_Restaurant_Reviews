@@ -1,5 +1,5 @@
 import streamlit as st
-from challenge_functions import possible_improvements as pi, general as g
+from challenge_functions import openai_interface as oi, general as g
 import asyncio
 import pandas as pd
 import datetime
@@ -25,10 +25,10 @@ if uploaded_file:
 
         selected_list = st.multiselect("Index", df.index.to_list())
 
-        submitted = st.form_submit_button("Get improvements")
+        submitted = st.form_submit_button("Get Improvements")
 
     if submitted:
-        improvements = pi.get_improvements(selected_list, df)
+        improvements = oi.get_improvements(selected_list, df)
 
         if improvements:
             st.markdown(improvements)

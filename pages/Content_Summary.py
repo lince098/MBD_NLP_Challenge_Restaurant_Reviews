@@ -1,5 +1,5 @@
 import streamlit as st
-from challenge_functions import content_summary as cs, general as g
+from challenge_functions import general as g, openai_interface as oi
 import asyncio
 import pandas as pd
 import datetime
@@ -23,10 +23,10 @@ if uploaded_file:
 
         selected_list = st.multiselect("Index", df.index.to_list())
 
-        submitted = st.form_submit_button("Get summaries")
+        submitted = st.form_submit_button("Get Summaries")
 
     if submitted:
-        summaries = asyncio.run(cs.summarize(selected_list, df))
+        summaries = asyncio.run(oi.summarize(selected_list, df))
 
         if summaries:
             summaries_df = pd.DataFrame(summaries, columns=["Review", "Summary"])
