@@ -1,8 +1,5 @@
 import streamlit as st
 from challenge_functions import openai_interface as oi, general as g
-import asyncio
-import pandas as pd
-import datetime
 
 
 st.sidebar.markdown("# Possible Improvements")
