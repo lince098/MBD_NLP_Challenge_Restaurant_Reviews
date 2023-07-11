@@ -11,6 +11,12 @@ openai.api_key = os.getenv("OPEN_AI_API_KEY")
 
 GPT_MODEL = "gpt-3.5-turbo"
 
+
+"""This prompt was optimized by ChatGPT with this input (Yes, I've greeted ChatGPT):
+        Hi chatgpt, I want you to improve the next prompt im going to send you. To do that, correct mistakes and optimize it so it becomes shorter and cheaper to use: 
+
+        You will receive different reviews of a restaurant. I want you to understand them and make summary that extracts the main points of them
+    """
 PROMPT_BEGINNING = """Please analyze this restaurant review and provide a concise summary highlighting its key points:\n"""
 
 
@@ -20,12 +26,6 @@ async def summarize(selected_list, df):
 
     selected_rows = df.iloc[selected_list, :]
     selected_rows_list = selected_rows["body"].to_list()
-
-    """This prompt was optimized by ChatGPT with this input (Yes, I've greeted ChatGPT):
-        Hi chatgpt, I want you to improve the next prompt im going to send you. To do that, correct mistakes and optimize it so it becomes shorter and cheaper to use: 
-
-        You will receive different reviews of a restaurant. I want you to understand them and make summary that extracts the main points of them
-    """
 
     requests_prompts = [PROMPT_BEGINNING + msg for msg in selected_rows_list]
 
