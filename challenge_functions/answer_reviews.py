@@ -69,7 +69,6 @@ def search(selected_list, df):
     if logger.level == logging.DEBUG:
         logger.debug("PRINTING Result")
         for i, item in enumerate(result, 1):
-            print("que paza")
             logger.debug(f"result {i}: {item}")
 
     return result
