@@ -1,4 +1,4 @@
-# Project Overview
+# Hotel Review Intelligence Dashboard: Enhancing Customer Feedback Analysis with NLP
 This project aims to develop a comprehensive dashboard for intelligent analysis of hotel customer reviews using various natural language processing (NLP) techniques. The goal is to provide hotel employees with a user-friendly tool to analyze customer feedback, particularly from sources like TripAdvisor, and gain valuable insights.
 
 ## Features
