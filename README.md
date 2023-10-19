@@ -1,5 +1,5 @@
-# Hotel Review Intelligence Dashboard: Enhancing Customer Feedback Analysis with NLP
-This project aims to develop a comprehensive dashboard for intelligent analysis of hotel customer reviews using various natural language processing (NLP) techniques. The goal is to provide hotel employees with a user-friendly tool to analyze customer feedback, particularly from sources like TripAdvisor, and gain valuable insights.
+# Restaurant Review Intelligence Dashboard: Enhancing Customer Feedback Analysis with NLP
+This project aims to develop a comprehensive dashboard for intelligent analysis of restaurant customer reviews using various natural language processing (NLP) techniques. The goal is to provide restaurant employees with a user-friendly tool to analyze customer feedback, particularly from sources like TripAdvisor, and gain valuable insights.
 
 ## Features
 The dashboard comprises several modules, each serving a unique purpose:
@@ -10,9 +10,9 @@ The dashboard comprises several modules, each serving a unique purpose:
 
 3. Content Summaries (OpenAI): The Content Summaries module provides a high-level overview of the content found within a set of reviews. It extracts key themes and highlights, helping hotel staff identify common issues or praise points.
 
-4. Possible Improvements (OpenAI): This feature analyzes customer reviews and identifies potential areas for improvement. It uses advanced NLP techniques to extract suggestions, complaints, and recurring themes from the reviews. Hotel management can use these insights to make data-driven decisions and enhance the overall guest experience
+4. Possible Improvements (OpenAI): This feature analyzes customer reviews and identifies potential areas for improvement. It uses advanced NLP techniques to extract suggestions, complaints, and recurring themes from the reviews. Restaurant management can use these insights to make data-driven decisions and enhance the overall guest experience
 
-5. Stars Distribution Histogram (Visualization): Understanding the distribution of star ratings in customer reviews is crucial for evaluating hotel performance. The Distribution of Stars Histogram provides a visual representation of how customers rate their experiences. This histogram helps hotel management identify trends and assess the overall satisfaction levels of guests.
+5. Stars Distribution Histogram (Visualization): Understanding the distribution of star ratings in customer reviews is crucial for evaluating restaurant performance. The Distribution of Stars Histogram provides a visual representation of how customers rate their experiences. This histogram helps hotel management identify trends and assess the overall satisfaction levels of guests.
 
 6. Translations (OpenAI): The Translation feature allows hotel staff to translate customer reviews into multiple languages, making it easier to cater to a global audience. This multilingual capability ensures that no valuable feedback is missed, and it facilitates communication with international guests. It utilizes state-of-the-art translation models to provide accurate and context-aware translations.
 
